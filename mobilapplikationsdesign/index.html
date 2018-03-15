@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      #map {
+        height: calc(100%);
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body onload="init();">
+      <section id="navigation" class="navbar fixed-top">
+        <form id="navigation-form">
+          <div class="form-group">
+            <input id="origin-input" class="form-control location-input controls" type="text" placeholder="Origin location">
+          </div>
+          <div class="form-group">
+            <input id="destination-input" class="form-control location-input controls" type="text" placeholder="Destination location">
+          </div>
+        </form>
+        <div id="mode-selector" class="row text-center">
+          <div class="col-4 col-lg-12">
+            <input id="walking" class="travel-type" type="radio" name="travel-Type" value="WALKING">
+            <label class="travel-mode" for="walking">Walking</label>
+          </div>
+
+          <div class="col-4 col-lg-12">
+            <input id="transit" class="travel-type" type="radio" name="travel-Type" value="TRANSIT">
+            <label class="travel-mode" for="transit" value="TRANSIT">Transit</label>
+          </div>
+
+          <div class="col-4 col-lg-12 order-first">
+            <input id="driving" class="travel-type" type="radio" name="travel-Type" value="DRIVING" checked="checked">
+            <label class="travel-mode" for="driving">Driving</label>
+          </div>
+        </div>
+      </section> 
+      <section id="directions" class="navbar fixed-top text-center">
+        <h4 id="street-waypoint"></h4>
+        <p id="waypoint-time"></p>
+      </section>
+
+        <div id="map"></div>
+
+      <section id="footer" class="fixed-bottom">
+        <div id="output">
+          <p> <span id="distance" class="text-dark distance"></span> <span id="time" class="text-secondary"></span> </p>
+        </div>
+        <button id="showRoute" class="btn btn-primary float-right btn-ripple" onClick="CalculateAndDisplayRoute();">Directions</button>
+        <button id="startRoute" class="btn btn-primary float-right btn-ripple" onClick="intializeRoute();">Start Route</button>
+
+        <button id="cancelRoute" class="btn btn-danger float-left btn-ripple" onClick="cancelRoute();">Cancel</button>
+      </section> 
+    <section id="landscape-app">
+      <section id="l-output-container" class="text-center">
+        <span id="l-output-city">Tokyo</span><span id="l-output-time">(Xh Ymin)</span>
+      </section>
+      <video id="camera" autoplay></video>
+    </section>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBL4n1VI0F49tC-ieML-Ecx8satMDFwPYU&libraries=places"
+    ></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.rawgit.com/HGustavs/Shaker.js/master/shaker.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.js"></script> 
+
+    <script src="main.js"></script>
+
+    <script>
+      var pacContainerInitialized = false; 
+      $('.controls').keyup(function() { 
+              if (!pacContainerInitialized) { 
+                      $('.pac-container').css('z-index', '9999'); 
+                      pacContainerInitialized = true; 
+              } 
+      }); 
+    </script>
+
+  </body>
+</html>

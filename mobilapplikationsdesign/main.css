@@ -1,0 +1,240 @@
+.navbar{
+	background-color: #1976d2;
+	color: white;
+	z-index: 1031;
+	box-shadow: 0px 7px 9.4px 0.6px rgba(0, 0, 0, 0.24);
+}
+
+#navigation-form{
+	margin: 0 auto;
+}
+
+.travel-type{
+	display: none;
+}
+
+#mode-selector{
+	margin: 0 auto;
+	z-index: 1032;
+}
+
+.travel-type + .travel-mode {
+  font-weight: bold;
+  padding: 2px 5px;
+  transition: all  0.2s ease-in;
+  border-radius: 15px;
+}
+
+.travel-type:checked + .travel-mode {
+  font-weight: bold;
+  background-color: white;
+  color: #1976d2;
+  padding: 2px 5px;
+  border-radius: 15px;
+}
+
+#output{
+	background-color: #fefefe;
+	padding-left: 15px;
+	border-bottom: 1px solid #eee;
+	visibility: hidden;
+	display: none;
+}
+
+.distance{
+	font-size: 24px;
+	font-weight: 700;
+}
+
+#time{
+	font-weight: 500;
+}
+/*****Buttons*****/
+.btn{
+	font-weight: 500;
+}
+
+#startRoute{
+	display: none;
+}
+
+#cancelRoute{
+	display: none;
+}
+
+#directions{
+	display: none;
+}
+
+.btn-ripple {
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: .375rem .75rem;
+  border-radius: 5px;
+  font-size: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.btn-ripple:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, .5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+.btn-ripple:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+#footer{
+	background-color: hsl(210, 9%, 96%);
+	/*box-shadow: 0px -7px 9.4px -6px rgba(0, 0, 0, 0.24); */
+}
+
+#landscape-app{
+	display: none;
+}
+
+#l-output-container{
+	background-color: #1976d2;
+	height: 50px;
+	box-shadow: 0px 7px 9.4px 0.6px rgba(0, 0, 0, 0.24);
+}
+
+#l-output-city{
+	line-height: 50px;
+	font-size: 24px;
+	font-weight: bold;
+	color: white;
+}
+
+#l-output-time{
+	margin-left: 5px;
+	line-height: 50px;
+	font-size: 24px;
+	font-weight: 400;
+	color: white;
+}
+
+
+#camera{
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 50px;
+	height: calc(100% - 50px);
+	width: 100%;
+}
+
+/* Small. Above 34em (544px) */
+@media screen and (min-width: 34em) {
+
+}
+
+@media screen and (Orientation: portrait){
+	#camera{
+		display: none;
+	}
+	#landscape-app{
+		display: none;
+	}
+	#navigation{
+		display: flex;
+	}
+	#footer{
+		display: block;
+	}
+	#map{
+		display: block;
+	}
+}
+
+@media screen and (Orientation: landscape) and (min-width: 426px){
+	#camera{
+		display: block;
+	}
+	#landscape-app{
+		display: block;
+	}
+	#navigation{
+		display: none;
+	}
+	#footer{
+		display: none;
+	}
+	#map{
+		display: none;
+	}
+}
+
+/* Medium. Above 48em (768px) */
+@media screen and (min-width: 48em) {
+
+}
+
+/* Large. Above 62em (992px) */
+@media screen and (min-width: 62em) and (Orientation: landscape) {
+	#navigation{
+		display: flex;
+		width: 225px;
+		position: absolute;
+		left: 0;
+		height: 100%;
+	}
+
+	.travel-mode{
+		margin-bottom: 10px;
+	}
+
+	#footer{
+		display: block;
+		left: 225px;
+	}
+
+	#camera{
+		display: none;
+	}
+
+	#landscape-app{
+		display: none;
+	}
+
+	#navigation{
+		display: flex;
+	}
+
+	#map{
+		display: block;
+	}
+
+}
+
+/* Extra large. Above 75em (1200px) */
+@media screen and (min-width: 75em) {
+
+}
